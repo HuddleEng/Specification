@@ -336,10 +336,8 @@ Here's a translation of this post's example into
 ```scala
 def isSatisfied[T](spec : Specification[T], x : T) : Boolean =
   spec match {
-    case AndSpecification(l, r) => isSatisfied(l, x)
-                                &amp;&amp; isSatisfied(r, x)
-    case OrSpecification(l, r) => isSatisfied(l, x)
-                               || isSatisfied(r, x)
+    case AndSpecification(l, r) => isSatisfied(l, x) && isSatisfied(r, x)
+    case OrSpecification(l, r) => isSatisfied(l, x) || isSatisfied(r, x)
     case NotSpecification(s) => !isSatisfied(s, x)
     case s : AtomicSpecification[T] => s.isSatisfiedBy(x)
 }
