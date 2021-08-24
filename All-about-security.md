@@ -165,7 +165,7 @@ us to keep security rules separate from the code that uses them.
 The specification classes are small and easy to understand;
 this means fewer bugs, safer users and happier programmers.
 
-In the [next post](Composite-specifications)),
+In the [next post](Composite-specifications.md),
 I'll demonstrate a more sophisticated and powerful version
 of this design, which makes handling complex rules much easier.
 
