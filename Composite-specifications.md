@@ -13,7 +13,7 @@ tl;dr
 -----
 
 I'm going to refactor the specifications I showed
-you in the [previous post](All-about-security)
+you in the [previous post](All-about-security.md)
 into a powerful, composable object model.
 
 The generic Specification interface
@@ -192,14 +192,14 @@ Despite its simplicity, this is a really powerful technique! Even with only a
 few atomic specifications, you can build up a large catalogue of rules
 by composing them with one another.
 
-In the [next post](Specifications-dsl),
+In the [next post](Specifications-dsl.md),
 I'll show you how to turn this model of specifications into a clear,
 readable domain-specific language.
 
 In this series
 --------------
 
-1. [All about security](All-about-security)
+1. [All about security](All-about-security.md)
 2. **The power of Composite Specifications**
-3. [Specifications 3: The DSL Strikes Back](Specifications-dsl)
-4. [Knock knock. Who's there? AbstractSpecificationNodeVisitorImpl](Specification-visitor)
+3. [Specifications 3: The DSL Strikes Back](Specifications-dsl.md)
+4. [Knock knock. Who's there? AbstractSpecificationNodeVisitorImpl](Specification-visitor.md)
