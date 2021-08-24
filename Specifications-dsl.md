@@ -51,7 +51,7 @@ _without_ changing any of the code we've already written.
 Extension methods
 -----------------
 <div style="float: right; margin-left:5px; position: relative; top: 10px;">
-  <img src="/img/2015-03-13-Specifications-dsl/scream.png"/>
+  <img src="scream.png"/>
   <p class="caption">Me when I use Java</p>
 </div>
 
