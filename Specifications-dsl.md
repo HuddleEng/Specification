@@ -21,7 +21,7 @@ by non-programmers.
 Designing a domain-specific language
 ------------------------------------
 
-In the [last post](Composite-specifications),
+In the [last post](Composite-specifications.md),
 we developed a few classes that allowed us to combine small,
 atomic specifications into more complex ones.
 The resulting code was very terse, but not particularly meaningful
@@ -40,7 +40,7 @@ var renameDocumentRule =
 
 The DSL uses _method chaining_ (sometimes known as a _fluent interface_)
 to drastically increase the readability of the code;
-while the example I started with in the [first post](All-about-security)
+while the example I started with in the [first post](All-about-security.md)
 had _no obvious bugs_, this version has _obviously no bugs_. It's a huge difference!
 
 We're going to set ourselves the goal of building this DSL
@@ -191,7 +191,7 @@ specifications using C#. When does it make sense to build a fluent DSL?
     permissions rules and I don't need to explain the code!
     This makes everyone feel good.
 
-In [the next post](Specification-visitor),
+In [the next post](Specification-visitor.md),
 we'll enterprise-ify this code even more, to make it easier to add new
 ways to evaluate specifications.
 
