@@ -79,18 +79,6 @@ namespace SpecificationTests
             AssertThrows<Exception>(Not.This(new PassingSpecification<object>()));
         }
 
-        [Test]
-        public void ErrorOverridingNodeWithPassingSpecDoesNotThrow()
-        {
-            AssertDoesNotThrow(new PassingSpecification<object>().WithError(new Exception()));
-        }
-
-        [Test]
-        public void ErrorOverridingNodeWithFailingSpecThrows()
-        {
-            AssertThrows<SomeException>(new FailingSpecification<object>(new SomeOtherException()).WithError(new SomeException()));
-        }
-
         private void AssertThrows<T>(ISpecification<object> spec) where T : Exception
         {
             Assert.Throws<T>(() => spec.ThrowIfNotSatisfiedBy(new object()));

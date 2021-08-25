@@ -79,18 +79,6 @@ namespace SpecificationTests
             AssertIsNotSatisfied(Not.This(new PassingSpecification<object>()));
         }
 
-        [Test]
-        public void ErrorOverridingNodeWithPassingSpecIsSatisfied()
-        {
-            AssertIsSatisfied(new PassingSpecification<object>().WithError(new Exception()));
-        }
-
-        [Test]
-        public void ErrorOverridingNodeWithFailingSpecIsNotSatisfied()
-        {
-            AssertIsNotSatisfied(new FailingSpecification<object>().WithError(new Exception()));
-        }
-
         private void AssertIsSatisfied(ISpecification<object> spec)
         {
             Assert.True(spec.IsSatisfiedBy(new object()));

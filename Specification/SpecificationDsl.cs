@@ -1,15 +1,9 @@
-using System;
 using Specification.SpecificationTree;
 
 namespace Specification
 {
     public static class SpecificationDsl
     {
-        public static ISpecification<T> WithError<T>(this ISpecification<T> spec, Exception exc)
-        {
-            return new MessageOverridingSpecification<T>(exc, spec);
-        }
-
         public static ISpecification<T> And<T>(this ISpecification<T> left, ISpecification<T> right)
         {
             return new AndSpecification<T>(left, right);

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Specification
 {
@@ -18,29 +16,6 @@ namespace Specification
         public void Throw()
         {
             throw Exception;
-        }
-
-        public override string ToString()
-        {
-            return GetType().Name + ": (" + Exception.Message + ")";
-        }
-    }
-
-
-    public class SpecificationAggregateException : AggregateException
-    {
-
-
-        public SpecificationAggregateException(IEnumerable<SpecificationError> errors)
-        {
-            Errors = errors;
-        }
-
-        public IEnumerable<SpecificationError> Errors { get; }
-
-        public SpecificationError GetFirstException<T>()
-        {
-            return Errors.SingleOrDefault(ex => ex.Exception is T);
         }
     }
 }

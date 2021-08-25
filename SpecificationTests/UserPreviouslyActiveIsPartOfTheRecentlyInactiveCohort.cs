@@ -34,6 +34,7 @@ namespace SpecificationTests
         [Test]
         public void UserIsPartOfTheCohort()
         {
+            Console.WriteLine(_inactiveCohort.PrettyPrint());
             Assert.IsTrue(_inactiveCohort.IsSatisfiedBy(_userContext));
         }
 
@@ -84,7 +85,6 @@ namespace SpecificationTests
         {
             var now = DateTime.UtcNow;
             return context.LastReportSent.Year == now.Year && context.LastReportSent.Month != now.Month;
-            ;
         }
     }
 

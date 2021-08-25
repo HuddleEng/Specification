@@ -13,8 +13,7 @@ namespace Specification
                 foldAnd: (l, r) => l && r,
                 foldOr: (l, r) => l || r,
                 foldNot: (x) => !x,
-                foldLeaf: s => s.IsSatisfiedBy(candidate),
-                foldMessageOverride: (e, x) => x
+                foldLeaf: s => s.IsSatisfiedBy(candidate)
             );
         }
 
@@ -25,16 +24,6 @@ namespace Specification
             if (errors.Any())
             {
                 errors.First().Throw();
-            }
-        }
-
-        public static void ThrowAggregateExceptionIfNotSatisfiedBy<T>(this ISpecification<T> spec, T candidate)
-        {
-            var visitor = new ExceptionCollectingVisitor<T>(candidate);
-            var errors = visitor.Visit(spec);
-            if (errors.Any())
-            {
-                throw new SpecificationAggregateException(errors);
             }
         }
 
@@ -68,9 +57,7 @@ namespace Specification
                 foldAnd: (l, r) => $"({l} AND {r})",
                 foldOr: (l, r) => $"({l} OR {r})",
                 foldNot: x => $"(NOT {x})",
-                foldLeaf: s => s.GetType().Name,
-                foldMessageOverride: (e, x) => $"({x} WITH ERROR {e.Exception})"
-                );
+                foldLeaf: s => s.GetType().Name);
         }
 
         public static TReturn Visit<TCandidate, TReturn>(this ISpecificationVisitor<TCandidate, TReturn> visitor, ISpecification<TCandidate> spec)
@@ -83,10 +70,9 @@ namespace Specification
             Func<TReturn, TReturn, TReturn> foldAnd,
             Func<TReturn, TReturn, TReturn> foldOr,
             Func<TReturn, TReturn> foldNot,
-            Func<LeafSpecification<TCandidate>, TReturn> foldLeaf,
-            Func<SpecificationError, TReturn, TReturn> foldMessageOverride)
+            Func<LeafSpecification<TCandidate>, TReturn> foldLeaf)
         {
-            var visitor = new SpecificationFold<TCandidate, TReturn>(foldAnd, foldOr, foldNot, foldLeaf, foldMessageOverride);
+            var visitor = new SpecificationFold<TCandidate, TReturn>(foldAnd, foldOr, foldNot, foldLeaf);
             return visitor.Visit(spec);
         }
     }

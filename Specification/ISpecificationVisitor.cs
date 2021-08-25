@@ -8,6 +8,5 @@ namespace Specification
         TReturn Visit(OrSpecification<TCandidate> specification);
         TReturn Visit(NotSpecification<TCandidate> specification);
         TReturn Visit(LeafSpecification<TCandidate> specification);
-        TReturn Visit(MessageOverridingSpecification<TCandidate> specification);
     }
 }

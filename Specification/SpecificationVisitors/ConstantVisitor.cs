@@ -30,10 +30,5 @@ namespace Specification.SpecificationVisitors
         {
             return _cannedValue;
         }
-
-        public virtual TReturn Visit(MessageOverridingSpecification<TCandidate> specification)
-        {
-            return _cannedValue;
-        }
     }
 }

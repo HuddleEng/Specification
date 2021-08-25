@@ -70,17 +70,7 @@ namespace Specification.SpecificationVisitors
             }
             return Singleton(specification.Error);
         }
-
-        public IEnumerable<SpecificationError> Visit(MessageOverridingSpecification<TCandidate> specification)
-        {
-            var exceptions = this.Visit(specification.Spec);
-            if (exceptions.Any())
-            {
-                return Singleton(specification.Error);
-            }
-            return Enumerable.Empty<SpecificationError>();
-        }
-
+        
         private static IEnumerable<T> Singleton<T>(T t)
         {
             return new[] { t };

@@ -13,20 +13,17 @@ namespace Specification.SpecificationVisitors
         private readonly Func<TAccumulator, TAccumulator, TAccumulator> _foldOr;
         private readonly Func<TAccumulator, TAccumulator> _foldNot;
         private readonly Func<LeafSpecification<TCandidate>, TAccumulator> _foldLeaf;
-        private readonly Func<SpecificationError, TAccumulator, TAccumulator> _foldMessageOverride;
 
         public SpecificationFold(
             Func<TAccumulator, TAccumulator, TAccumulator> foldAnd,
             Func<TAccumulator, TAccumulator, TAccumulator> foldOr,
             Func<TAccumulator, TAccumulator> foldNot,
-            Func<LeafSpecification<TCandidate>, TAccumulator> foldLeaf,
-            Func<SpecificationError, TAccumulator, TAccumulator> foldMessageOverride)
+            Func<LeafSpecification<TCandidate>, TAccumulator> foldLeaf)
         {
             _foldAnd = foldAnd;
             _foldOr = foldOr;
             _foldNot = foldNot;
             _foldLeaf = foldLeaf;
-            _foldMessageOverride = foldMessageOverride;
         }
 
         public TAccumulator Visit(AndSpecification<TCandidate> specification)
@@ -47,11 +44,6 @@ namespace Specification.SpecificationVisitors
         public TAccumulator Visit(LeafSpecification<TCandidate> specification)
         {
             return _foldLeaf(specification);
-        }
-
-        public TAccumulator Visit(MessageOverridingSpecification<TCandidate> specification)
-        {
-            return _foldMessageOverride(specification.Error, this.Visit(specification.Spec));
         }
     }
 }

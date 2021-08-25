@@ -74,26 +74,6 @@ namespace SpecificationTests
         }
 
         [Test]
-        public void MessageOverrideNodesWithEqualChildrenAndEqualExceptionsAreEqual()
-        {
-            var exc = new Exception();
-            AssertEqual(new PassingSpecification<object>().WithError(exc), new PassingSpecification<object>().WithError(exc));
-        }
-
-        [Test]
-        public void MessageOverrideNodesWithDifferentChildrenAreNotEqual()
-        {
-            var exc = new Exception();
-            AssertNotEqual(new PassingSpecification<object>().WithError(exc), new FailingSpecification<object>().WithError(exc));
-        }
-
-        [Test]
-        public void MessageOverrideNodesWithDifferentExceptionsAreNotEqual()
-        {
-            AssertNotEqual(new PassingSpecification<object>().WithError(new Exception("a message")), new PassingSpecification<object>().WithError(new Exception("a different message")));
-        }
-
-        [Test]
         public void AndNodesAndOrNodesAreNotEqual()
         {
             AssertNotEqual(new PassingSpecification<object>().And(new FailingSpecification<object>()), new PassingSpecification<object>().Or(new FailingSpecification<object>()));
@@ -106,27 +86,9 @@ namespace SpecificationTests
         }
 
         [Test]
-        public void AndNodesAndMessageOverrideNodesAreNotEqual()
-        {
-            AssertNotEqual(new FailingSpecification<object>().And(new PassingSpecification<object>()), new PassingSpecification<object>().WithError(new Exception()));
-        }
-
-        [Test]
         public void OrNodesAndNotNodesAreNotEqual()
         {
             AssertNotEqual(new FailingSpecification<object>().Or(new FailingSpecification<object>()), new PassingSpecification<object>().Or(new FailingSpecification<object>()));
-        }
-
-        [Test]
-        public void OrNodesAndMessageOverrideNodesAreNotEqual()
-        {
-            AssertNotEqual(new FailingSpecification<object>().Or(new PassingSpecification<object>()), new PassingSpecification<object>().WithError(new Exception()));
-        }
-
-        [Test]
-        public void NotNodesAndMessageOverrideNodesAreNotEqual()
-        {
-            AssertNotEqual(Not.This(new PassingSpecification<object>()), new PassingSpecification<object>().WithError(new Exception()));
         }
 
         static void AssertEqual(ISpecification<object> left, ISpecification<object> right)

@@ -24,12 +24,6 @@ namespace Specification.SpecificationVisitors
             return new StrictLeafSpecificationComparer<T>(specification);
         }
 
-        public ISpecificationVisitor<T, bool> Visit(MessageOverridingSpecification<T> specification)
-        {
-            return new StrictMessageOverridingSpecificationComparer<T>(specification);
-        }
-
-
         private class StrictAndSpecificationComparer<T2> : ConstantVisitor<T2, bool>
         {
             readonly AndSpecification<T2> _left;
@@ -93,24 +87,6 @@ namespace Specification.SpecificationVisitors
             public override bool Visit(LeafSpecification<T2> right)
             {
                 return _left.Equals(right);
-            }
-        }
-
-        private class StrictMessageOverridingSpecificationComparer<T2> : ConstantVisitor<T2, bool>
-        {
-            readonly MessageOverridingSpecification<T2> _left;
-
-            public StrictMessageOverridingSpecificationComparer(MessageOverridingSpecification<T2> left)
-                : base(false)
-            {
-                _left = left;
-            }
-
-            public override bool Visit(MessageOverridingSpecification<T2> right)
-            {
-                return _left.Spec.StrictlyEquals(right.Spec)
-                    && _left.Error.Exception.GetType() == right.Error.Exception.GetType()
-                    && _left.Error.Exception.Message == right.Error.Exception.Message;
             }
         }
     }
