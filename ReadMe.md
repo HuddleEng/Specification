@@ -1,7 +1,7 @@
 Specification pattern
 
 Simple example in the tests can be found here
-[UserPreviouslyActiveIsPartOfTheRecentlyInactiveCohort.cs](SpecificationTests\UserPreviouslyActiveIsPartOfTheRecentlyInactiveCohort.cs)
+[UserPreviouslyActiveIsPartOfTheRecentlyInactiveCohort.cs](SpecificationTests/UserPreviouslyActiveIsPartOfTheRecentlyInactiveCohort.cs)
 
 ```csharp
 ISpecification<UserContext> inactiveCohort =
