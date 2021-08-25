@@ -1,4 +1,5 @@
 Specification pattern
+This code is base on Eric Evans and Martin Fowler's [article](http://martinfowler.com/apsupp/spec.pdf) introducing the Specification pattern
 
 Simple example in the tests can be found here
 [UserPreviouslyActiveIsPartOfTheRecentlyInactiveCohort.cs](SpecificationTests/UserPreviouslyActiveIsPartOfTheRecentlyInactiveCohort.cs)
