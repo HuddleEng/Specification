@@ -1,5 +1,26 @@
 Specification pattern
 
+Simple example in the tests can be found here
+[UserPreviouslyActiveIsPartOfTheRecentlyInactiveCohort.cs](SpecificationTests\UserPreviouslyActiveIsPartOfTheRecentlyInactiveCohort.cs)
+
+```csharp
+ISpecification<UserContext> inactiveCohort =
+                new UserIsInactiveForOverTwoWeeks()
+                .And(new UserHasViewedSomeThing())
+                .And(new UserHasUploadedSomeThing())
+                .And(new UserHasNotReceivedAReportThisMonth());
+
+var userContext = new UserContext
+{
+    LastActiveDate = DateTime.UtcNow.AddDays(-15),
+    LastReportSent = DateTime.UtcNow.AddMonths(-1),
+    TotalUploads = 10,
+    TotalViews = 50
+};
+
+bool userInCohort = inactiveCohort.IsSatisfiedBy(userContext)
+```
+
 In this series
 --------------
 
